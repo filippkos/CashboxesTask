@@ -1,36 +1,37 @@
 package com;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Main {
+    //number of customers.
     private final static int CUSTOMERS = 6;
+
+    //number of cash boxes.
     private final static int CASHBOXES = 3;
 
     public static void main(String[] args) {
-        System.out.println(totalTimeCalculation(CASHBOXES,CUSTOMERS));
+        System.out.println("Total time: " + totalTimeCalculation(CASHBOXES, CUSTOMERS));
     }
 
-    static int totalTimeCalculation(int cashboxes, int customers) {
+    static int totalTimeCalculation(int cashBoxes, int customers) {
         int totalTime = 0;
-        int [] boxes = new int [cashboxes];
+        int[] boxes = new int[cashBoxes];
         ArrayList<Integer> customersTimeArray = customersTimeToArray(customers);
-        System.out.println(customersTimeArray);
 
 
-        if (cashboxes == 1) {
-            for (int time:customersTimeArray) {
+        if (cashBoxes == 1) {
+            for (int time : customersTimeArray) {
                 totalTime += time;
             }
             return totalTime;
         }
 
 
-        if (cashboxes > customers) {
+        if (cashBoxes >= customers) {
             int currTime = 0;
-            for (int time:customersTimeArray) {
+            for (int time : customersTimeArray) {
                 if (time >= currTime)
                     currTime = time;
             }
@@ -38,12 +39,11 @@ public class Main {
         }
 
 
-        if (cashboxes > 1 && customers > cashboxes) {
+        if (cashBoxes > 1 && customers > cashBoxes) {
             Collections.sort(customersTimeArray, Collections.reverseOrder());
             System.out.println(customersTimeArray);
             int min = 0;
             int pos = 0;
-
 
 
             for (int i = 0; i < customersTimeArray.size(); i++) {
@@ -63,15 +63,23 @@ public class Main {
                 }
             }
         }
+        showMeCashBoxes(boxes);
         return Arrays.stream(boxes).max().getAsInt();
-    };
+    }
 
-
-    static ArrayList<Integer> customersTimeToArray(int quantity){
+    static ArrayList<Integer> customersTimeToArray(int quantity) {
         ArrayList<Integer> customersTime = new ArrayList<>();
-        for (int i = 0; i < quantity; i++){
+        for (int i = 0; i < quantity; i++) {
             customersTime.add(new Customer().getTimeAtTheCheckout());
         }
         return customersTime;
     }
+
+    static void showMeCashBoxes (int[] boxes){
+        String timeDistribution = "Time distribution:\n" + "|";
+        for (int box:boxes) {
+            timeDistribution += box + "|";
+        }
+        System.out.println(timeDistribution);
+    };
 }

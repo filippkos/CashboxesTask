@@ -9,10 +9,10 @@ public class Main {
     private final static int CUSTOMERS = 6;
 
     //number of cash boxes.
-    private final static int CASHBOXES = 3;
+    private final static int CASH_BOXES = 3;
 
     public static void main(String[] args) {
-        System.out.println("Total time: " + totalTimeCalculation(CASHBOXES, CUSTOMERS));
+        System.out.println("Total time: " + totalTimeCalculation(CASH_BOXES, CUSTOMERS));
     }
 
     static int totalTimeCalculation(int cashBoxes, int customers) {
@@ -31,7 +31,7 @@ public class Main {
         return Arrays.stream(boxes).max().getAsInt();
     }
 
-    private static int[] uniformDistributionOfTime(int[] boxes, ArrayList<Integer> customersTimeArray) {
+    static int[] uniformDistributionOfTime(int[] boxes, ArrayList<Integer> customersTimeArray) {
         Collections.sort(customersTimeArray, Collections.reverseOrder());
         System.out.println(customersTimeArray);
         int min = 0;
@@ -56,7 +56,7 @@ public class Main {
         return boxes;
     }
 
-    private static int findTheAmountOfTime(ArrayList<Integer> customersTimeArray) {
+    static int findTheAmountOfTime(ArrayList<Integer> customersTimeArray) {
         int totalTime = 0;
         for (int time : customersTimeArray) {
             totalTime += time;
@@ -64,7 +64,7 @@ public class Main {
         return totalTime;
     }
 
-    private static int findTheMaxTime(ArrayList<Integer> customersTimeArray) {
+    static int findTheMaxTime(ArrayList<Integer> customersTimeArray) {
         int currTime = 0;
         for (int time : customersTimeArray) {
             if (time >= currTime)

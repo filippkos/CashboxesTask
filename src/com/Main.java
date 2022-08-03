@@ -16,55 +16,61 @@ public class Main {
     }
 
     static int totalTimeCalculation(int cashBoxes, int customers) {
-        int totalTime = 0;
         int[] boxes = new int[cashBoxes];
         ArrayList<Integer> customersTimeArray = customersTimeToArray(customers);
-
-
         if (cashBoxes == 1) {
-            for (int time : customersTimeArray) {
-                totalTime += time;
-            }
-            return totalTime;
+            return findTheAmountOfTime(customersTimeArray);
         }
-
-
         if (cashBoxes >= customers) {
-            int currTime = 0;
-            for (int time : customersTimeArray) {
-                if (time >= currTime)
-                    currTime = time;
-            }
-            return currTime;
+            return findTheMaxTime(customersTimeArray);
         }
-
-
         if (cashBoxes > 1 && customers > cashBoxes) {
-            Collections.sort(customersTimeArray, Collections.reverseOrder());
-            System.out.println(customersTimeArray);
-            int min = 0;
-            int pos = 0;
-
-
-            for (int i = 0; i < customersTimeArray.size(); i++) {
-                if (i <= boxes.length - 1) {
-                    boxes[i] += customersTimeArray.get(i);
-                    if (i == boxes.length - 1)
-                        min = customersTimeArray.get(i);
-                    continue;
-                } else {
-                    for (int j = 0; j < boxes.length; j++) {
-                        min = Arrays.stream(boxes).min().getAsInt();
-                        if (boxes[j] <= min) {
-                            pos = j;
-                        }
-                    }
-                    boxes[pos] += customersTimeArray.get(i);
-                }
-            }
+            boxes = uniformDistributionOfTime(boxes, customersTimeArray);
         }
         showMeCashBoxes(boxes);
         return Arrays.stream(boxes).max().getAsInt();
+    }
+
+    private static int[] uniformDistributionOfTime(int[] boxes, ArrayList<Integer> customersTimeArray) {
+        Collections.sort(customersTimeArray, Collections.reverseOrder());
+        System.out.println(customersTimeArray);
+        int min = 0;
+        int pos = 0;
+
+        for (int i = 0; i < customersTimeArray.size(); i++) {
+            if (i <= boxes.length - 1) {
+                boxes[i] += customersTimeArray.get(i);
+                if (i == boxes.length - 1)
+                    min = customersTimeArray.get(i);
+                continue;
+            } else {
+                for (int j = 0; j < boxes.length; j++) {
+                    min = Arrays.stream(boxes).min().getAsInt();
+                    if (boxes[j] <= min) {
+                        pos = j;
+                    }
+                }
+                boxes[pos] += customersTimeArray.get(i);
+            }
+        }
+        return boxes;
+    }
+
+    private static int findTheAmountOfTime(ArrayList<Integer> customersTimeArray) {
+        int totalTime = 0;
+        for (int time : customersTimeArray) {
+            totalTime += time;
+        }
+        return totalTime;
+    }
+
+    private static int findTheMaxTime(ArrayList<Integer> customersTimeArray) {
+        int currTime = 0;
+        for (int time : customersTimeArray) {
+            if (time >= currTime)
+                currTime = time;
+        }
+        return currTime;
     }
 
     static ArrayList<Integer> customersTimeToArray(int quantity) {
@@ -75,11 +81,13 @@ public class Main {
         return customersTime;
     }
 
-    static void showMeCashBoxes (int[] boxes){
+    static void showMeCashBoxes(int[] boxes) {
         String timeDistribution = "Time distribution:\n" + "|";
-        for (int box:boxes) {
+        for (int box : boxes) {
             timeDistribution += box + "|";
         }
         System.out.println(timeDistribution);
-    };
+    }
+
+
 }

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a77c653b-8001-4920-abbb-f80350042636" name="Changes" comment="First commit">
+    <list default="true" id="a77c653b-8001-4920-abbb-f80350042636" name="Changes" comment="32 line. &quot;&gt;=&quot; instead &quot;&gt;&quot;.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1659441765255</updated>
       <workItem from="1659441767377" duration="15353000" />
-      <workItem from="1659508310364" duration="1262000" />
+      <workItem from="1659508310364" duration="2768000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1659457390359</created>
@@ -92,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659457390359</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="32 line. &quot;&gt;=&quot; instead &quot;&gt;&quot;.">
+      <created>1659509899240</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1659509899240</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="32 line. &quot;&gt;=&quot; instead &quot;&gt;&quot;." />
+    <option name="LAST_COMMIT_MESSAGE" value="32 line. &quot;&gt;=&quot; instead &quot;&gt;&quot;." />
   </component>
 </project>
